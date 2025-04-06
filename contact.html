@@ -4,20 +4,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description"
-        content="Free PDF Converter. Convert images to PDF for free online. Supports JPG, PNG, WEBP. No registration needed. Merge multiple images into one PDF document.">
-    <meta name="description"
-        content="Free PDF Converter. Convert images to PDF for free online. No uploads, no watermarks. Works on any device. Fast, secure, and privacy-focused.">
-    <meta property="og:title" content="Image to PDF Converter | PDFMaster Tools">
-    <meta property="og:description" content="Convert images to PDF for free online. No uploads, no watermarks.">
-    <meta property="og:image" content="https://yourdomain.com/og-image.jpg">
     <link rel="icon" href="assets/images/favicon.ico.png" type="image/x-icon">
-    <title>PDFVilla</title>
-    <link rel="stylesheet" href="/style.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <title>Contact Us | PDFVilla </title>
+    <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
+    <!-- Include your existing navbar -->
     <nav class="navbar">
         <div class="navbar-container">
             <!-- Logo on the left -->
@@ -36,17 +29,15 @@
                         <div class="nav-link dropdown-toggle">More Tools <i class="dropdown-icon">▼</i></div>
                         <ul class="dropdown-menu">
                             <li><a href="Index.html">Images to PDF</a></li>
-                            <li><a href="comingsoon.html">Coming Soon...</a></li>
-                            <li><a href="comingsoon.html">Coming Soon...</a></li>
-                            <li><a href="comingsoon.html">Coming Soon...</a></li>
+                            <li><a href="#">Coming Soon...</a></li>
+                            <li><a href="#">Coming Soon...</a></li>
+                            <li><a href="#">Coming Soon...</a></li>
                         </ul>
+                    </li>
                     <li class="nav-item"><a href="about.html" class="nav-link">About US</a></li>
                     <li class="nav-item"><a href="contact.html" class="nav-link">Contact US</a></li>
-
-                    </li>
                 </ul>
             </div>
-
             <!-- Mobile menu button -->
             <button class="navbar-toggle" id="mobile-menu-toggle">
                 <span></span>
@@ -55,72 +46,66 @@
             </button>
         </div>
     </nav>
-    <div class="container">
-        <!-- <section class="intro-section">
-            <h2>Convert Images to PDF in 3 Simple Steps</h2>
-            <ol class="steps">
-                <li>Upload your images (drag & drop or click to browse)</li>
-                <li>Adjust PDF settings (page size, orientation, margins)</li>
-                <li>Download your PDF file instantly</li>
-            </ol>
-
-            <h3>Why Use Our Image to PDF Converter?</h3>
-            <ul class="benefits">
-                <li>✅ 100% free with no watermarks</li>
-                <li>✅ No registration required</li>
-                <li>✅ Works on all devices (mobile, tablet, desktop)</li>
-                <li>✅ Preserves original image quality</li>
-                <li>✅ Secure processing (files never leave your browser)</li>
-            </ul>
-        </section> -->
-        <h1>Image to PDF Converter</h1>
-        <p class="subtitle">Convert your images to PDF files easily</p>
-        <div class="upload-area" id="dropArea">
-            <input type="file" id="fileInput" accept="image /*" multiple>
-            <label for="fileInput" class="upload-label">
-                <img src="https://cdn-icons-png.flaticon.com/512/2919/2919593.png" alt="Upload" class="upload-icon">
-                <p>Drag & drop images here or click to browse</p>
-            </label>
+    <div class="contact-container">
+        <div class="contact-header">
+            <h1>Contact Us</h1>
+            <p>Have questions or feedback? We'd love to hear from you!</p>
         </div>
 
-        <div class="preview-container" id="previewContainer">
-            <h2>Selected Images</h2>
-            <div class="image-grid" id="imageGrid"></div>
-        </div>
+        <div class="contact-methods">
+            <div class="contact-card">
+                <h3><i class="fas fa-envelope"></i> Email Us</h3>
+                <p>For general inquiries and support:</p>
+                <p><strong>nawabthedeveloper@gmail.com</strong></p>
+                <p>For business partnerships:</p>
+                <p><strong>nawabthedeveloper@gmail.com</strong></p>
+            </div>
 
-        <div class="options">
-            <div class="option-group">
-                <label for="pdfName">PDF File Name:</label>
-                <input type="text" id="pdfName" placeholder="output" value="output">
-            </div>
-            <div class="option-group">
-                <label for="pageSize">Page Size:</label>
-                <select id="pageSize">
-                    <option value="a4">A4</option>
-                    <option value="letter">Letter</option>
-                    <option value="a5">A5</option>
-                    <option value="fit">Fit to Image</option>
-                </select>
-            </div>
-            <div class="option-group">
-                <label for="orientation">Orientation:</label>
-                <select id="orientation">
-                    <option value="portrait">Portrait</option>
-                    <option value="landscape">Landscape</option>
-                </select>
-            </div>
-            <div class="option-group">
-                <label for="margin">Margin (mm):</label>
-                <input type="number" id="margin" value="10" min="0">
+            <div class="contact-card">
+                <h3><i class="fas fa-map-marker-alt"></i> Our Location</h3>
+                <p>PDFVilla,</p>
+                <p>Ahmedabad,</p>
+                <p>Gujrat,380055</p>
+                <p>India</p>
             </div>
         </div>
 
-        <button id="convertBtn" class="convert-btn" disabled>Convert to PDF</button>
-        <button id="clearBtn" class="clear-btn" disabled>Clear All</button>
+        <div class="contact-form">
+            <h2>Send Us a Message</h2>
+            <form id="contactForm">
+                <div class="form-group">
+                    <label for="name">Your Name</label>
+                    <input type="text" id="name" name="name" required>
+                </div>
 
-        <div class="status" id="status"></div>
+                <div class="form-group">
+                    <label for="email">Email Address</label>
+                    <input type="email" id="email" name="email" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="subject">Subject</label>
+                    <select id="subject" name="subject" required>
+                        <option value="">Select a subject</option>
+                        <option value="support">Technical Support</option>
+                        <option value="feedback">Feedback/Suggestions</option>
+                        <option value="feedback">Found a bug in tool</option>
+                        <option value="business">Business Inquiry</option>
+                        <option value="other">Other</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="message">Your Message</label>
+                    <textarea id="message" name="message" required></textarea>
+                </div>
+
+                <button type="submit" class="submit-btn">Send Message</button>
+            </form>
+        </div>
     </div>
 
+    <!-- Include your existing footer -->
     <footer class="site-footer">
         <div class="footer-container">
             <!-- Left side - Logo and tagline (previously right side) -->
@@ -169,7 +154,7 @@
             </div>
         </div>
         <div class="copyright">
-            <p>&copy; 2025 PDFVilla Tools. All rights reserved.</p>
+            <p>&copy; 2025 PDFVilla. All rights reserved.</p>
             <div class="social-links">
                 <a href="#" aria-label="Facebook"><i class="fab fa-facebook"></i></a>
                 <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
@@ -178,9 +163,28 @@
             </div>
         </div>
     </footer>
+    <!-- Font Awesome for icons -->
+    <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
 
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
-    <script src="/script.js"></script>
+    <!-- Form handling script -->
+    <script>
+        document.getElementById('contactForm').addEventListener('submit', function (e) {
+            e.preventDefault();
+
+            // Get form values
+            const name = document.getElementById('name').value;
+            const email = document.getElementById('email').value;
+            const subject = document.getElementById('subject').value;
+            const message = document.getElementById('message').value;
+
+            // Here you would typically send the data to a server
+            // For now, we'll just show an alert
+            alert(`Thank you, ${name}! Your message has been received. We'll respond to ${email} shortly.`);
+
+            // Reset the form
+            this.reset();
+        });
+    </script>
 </body>
 
 </html>

@@ -1,5 +1,64 @@
 // Wait for the DOM to be fully loaded
 document.addEventListener('DOMContentLoaded', function () {
+    // Mobile menu functionality
+    document.addEventListener('contextmenu', event => event.preventDefault());
+    // Debugger protection
+    setInterval(function () {
+        if (typeof console !== 'undefined') {
+            console.clear();
+        }
+        if (typeof console !== 'undefined' && console.log) {
+            console.log('%cStop!', 'color:red;font-size:40px');
+            console.log('%cThis browser feature is for developers only.', 'font-size:20px');
+        }
+    }, 1000);
+
+    // Break devtools
+    window.addEventListener('devtoolschange', event => {
+        if (event.detail.isOpen) {
+            window.location.href = '/error';
+        }
+    });
+
+    // Or more aggressively:
+    // (function () {
+    //     var re = /x/;
+    //     re.toString = function () {
+    //         window.location.href = 'https://yourdomain.com/anti-piracy';
+    //     };
+    //     console.log('%c', re);
+    // })();
+
+    const mobileMenuToggle = document.getElementById('mobile-menu-toggle');
+    const navbarMenu = document.querySelector('.navbar-menu');
+    const dropdownToggles = document.querySelectorAll('.dropdown-toggle');
+
+    // Toggle mobile menu
+    mobileMenuToggle.addEventListener('click', function () {
+        this.classList.toggle('active');
+        navbarMenu.classList.toggle('active');
+    });
+
+    // Toggle dropdowns on mobile
+    dropdownToggles.forEach(toggle => {
+        toggle.addEventListener('click', function (e) {
+            if (window.innerWidth <= 768) {
+                e.preventDefault();
+                const dropdown = this.parentElement;
+                dropdown.classList.toggle('active');
+            }
+        });
+    });
+
+    // Close mobile menu when clicking a link
+    document.querySelectorAll('.navbar-menu a').forEach(link => {
+        link.addEventListener('click', function () {
+            if (window.innerWidth <= 768) {
+                mobileMenuToggle.classList.remove('active');
+                navbarMenu.classList.remove('active');
+            }
+        });
+    });
     // Initialize variables
     const fileInput = document.getElementById('fileInput');
     const dropArea = document.getElementById('dropArea');

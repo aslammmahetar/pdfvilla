@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description"
+        content="Convert images to PDF for free online. Supports JPG, PNG, WEBP. No registration needed. Merge multiple images into one PDF document.">
+    <title>Image to PDF Converter | By Aslam M Mahetar</title>
+    <link rel="stylesheet" href="/style.css">
+</head>
+
+<body>
+    <div class="container">
+        <section class="intro-section">
+            <h2>Convert Images to PDF in 3 Simple Steps</h2>
+            <ol class="steps">
+                <li>Upload your images (drag & drop or click to browse)</li>
+                <li>Adjust PDF settings (page size, orientation, margins)</li>
+                <li>Download your PDF file instantly</li>
+            </ol>
+
+            <h3>Why Use Our Image to PDF Converter?</h3>
+            <ul class="benefits">
+                <li>✅ 100% free with no watermarks</li>
+                <li>✅ No registration required</li>
+                <li>✅ Works on all devices (mobile, tablet, desktop)</li>
+                <li>✅ Preserves original image quality</li>
+                <li>✅ Secure processing (files never leave your browser)</li>
+            </ul>
+        </section>
+        <h1>Image to PDF Converter</h1>
+        <p class="subtitle">Convert your images to PDF files easily</p>
+
+        <div class="upload-area" id="dropArea">
+            <input type="file" id="fileInput" accept="image/*" multiple>
+            <label for="fileInput" class="upload-label">
+                <img src="https://cdn-icons-png.flaticon.com/512/2919/2919593.png" alt="Upload" class="upload-icon">
+                <p>Drag & drop images here or click to browse</p>
+            </label>
+        </div>
+
+        <div class="preview-container" id="previewContainer">
+            <h2>Selected Images</h2>
+            <div class="image-grid" id="imageGrid"></div>
+        </div>
+
+        <div class="options">
+            <div class="option-group">
+                <label for="pdfName">PDF File Name:</label>
+                <input type="text" id="pdfName" placeholder="output" value="output">
+            </div>
+            <div class="option-group">
+                <label for="pageSize">Page Size:</label>
+                <select id="pageSize">
+                    <option value="a4">A4</option>
+                    <option value="letter">Letter</option>
+                    <option value="a5">A5</option>
+                    <option value="fit">Fit to Image</option>
+                </select>
+            </div>
+            <div class="option-group">
+                <label for="orientation">Orientation:</label>
+                <select id="orientation">
+                    <option value="portrait">Portrait</option>
+                    <option value="landscape">Landscape</option>
+                </select>
+            </div>
+            <div class="option-group">
+                <label for="margin">Margin (mm):</label>
+                <input type="number" id="margin" value="10" min="0">
+            </div>
+        </div>
+
+        <button id="convertBtn" class="convert-btn" disabled>Convert to PDF</button>
+        <button id="clearBtn" class="clear-btn" disabled>Clear All</button>
+
+        <div class="status" id="status"></div>
+        <section class="faq-section">
+            <h2>Frequently Asked Questions</h2>
+
+            <div class="faq-item">
+                <h3>What image formats can I convert to PDF?</h3>
+                <p>Our tool supports JPG, PNG, WEBP, GIF, and other common image formats.</p>
+            </div>
+
+            <div class="faq-item">
+                <h3>Is there a limit to the number of images I can convert?</h3>
+                <p>You can convert multiple images at once, but very large collections may affect performance as
+                    everything
+                    processes in your browser.</p>
+            </div>
+
+            <div class="faq-item">
+                <h3>Are my images secure?</h3>
+                <p>Absolutely! All processing happens in your browser - your images never get uploaded to any server.
+                </p>
+            </div>
+        </section>
+    </div>
+
+    <footer>
+        <p>Created by Aslam M Mahetar | Software Developer</p>
+    </footer>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+    <script src="/script.js"></script>
+</body>
+
+</html>

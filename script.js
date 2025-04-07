@@ -1,5 +1,11 @@
 // Wait for the DOM to be fully loaded
 document.addEventListener('DOMContentLoaded', function () {
+
+    window.dataLayer = window.dataLayer || [];
+    function gtag() { dataLayer.push(arguments); }
+    gtag('js', new Date());
+
+    gtag('config', 'G-85PRXMJ9YE');
     // Mobile menu functionality
     document.addEventListener('contextmenu', event => event.preventDefault());
     // Debugger protection

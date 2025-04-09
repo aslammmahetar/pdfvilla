@@ -1,0 +1,334 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Image Format Converter | PDFVilla</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        .converter-container {
+            max-width: 800px;
+            margin: 30px auto;
+            padding: 30px;
+            background-color: white;
+            border-radius: var(--border-radius);
+            box-shadow: var(--box-shadow);
+        }
+
+        .format-options {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
+            margin: 25px 0;
+        }
+
+        .format-option {
+            flex: 1;
+            min-width: 120px;
+        }
+
+        .format-option input[type="radio"] {
+            display: none;
+        }
+
+        .format-option label {
+            display: block;
+            padding: 15px;
+            background-color: rgba(74, 111, 165, 0.1);
+            border-radius: var(--border-radius);
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .format-option input[type="radio"]:checked+label {
+            background-color: var(--primary-color);
+            color: white;
+        }
+
+        .format-icon {
+            font-size: 2rem;
+            margin-bottom: 10px;
+        }
+
+        .quality-slider {
+            width: 100%;
+            margin: 20px 0;
+        }
+
+        .advanced-options {
+            margin-top: 30px;
+            padding-top: 20px;
+            border-top: 1px solid #eee;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Include your existing navbar -->
+    <nav class="navbar">[...]</nav>
+
+    <div class="converter-container">
+        <h1>Image Format Converter</h1>
+        <p class="subtitle">Convert between JPG, PNG, WEBP, and more with full quality control</p>
+
+        <div class="upload-area" id="dropArea">
+            <input type="file" id="fileInput" accept="image/*">
+            <label for="fileInput" class="upload-label">
+                <img src="https://cdn-icons-png.flaticon.com/512/2919/2919593.png" alt="Upload" class="upload-icon">
+                <p>Drag & drop image or click to browse</p>
+            </label>
+        </div>
+
+        <div class="preview-container" id="previewContainer" style="display:none;">
+            <h2>Image Preview</h2>
+            <div class="image-preview">
+                <img id="imagePreview" src="#" alt="Preview">
+                <div class="image-info" id="imageInfo"></div>
+            </div>
+        </div>
+
+        <h3>Output Format</h3>
+        <div class="format-options">
+            <div class="format-option">
+                <input type="radio" id="format-jpg" name="outputFormat" value="jpg" checked>
+                <label for="format-jpg">
+                    <div class="format-icon">🖼️</div>
+                    <span>JPG</span>
+                </label>
+            </div>
+            <div class="format-option">
+                <input type="radio" id="format-png" name="outputFormat" value="png">
+                <label for="format-png">
+                    <div class="format-icon">📄</div>
+                    <span>PNG</span>
+                </label>
+            </div>
+            <div class="format-option">
+                <input type="radio" id="format-webp" name="outputFormat" value="webp">
+                <label for="format-webp">
+                    <div class="format-icon">🌐</div>
+                    <span>WEBP</span>
+                </label>
+            </div>
+            <div class="format-option">
+                <input type="radio" id="format-gif" name="outputFormat" value="gif">
+                <label for="format-gif">
+                    <div class="format-icon">🎞️</div>
+                    <span>GIF</span>
+                </label>
+            </div>
+        </div>
+
+        <div class="advanced-options">
+            <h3>Advanced Options</h3>
+            <div class="option-group">
+                <label for="quality">Quality: <span id="qualityValue">85</span>%</label>
+                <input type="range" id="quality" min="1" max="100" value="85" class="quality-slider">
+            </div>
+            <div class="option-group">
+                <label for="resize">Resize (optional):</label>
+                <div style="display: flex; gap: 10px;">
+                    <input type="number" id="resizeWidth" placeholder="Width" min="1">
+                    <span style="align-self: center;">×</span>
+                    <input type="number" id="resizeHeight" placeholder="Height" min="1">
+                    <select id="resizeUnit">
+                        <option value="px">px</option>
+                        <option value="%">%</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+
+        <button id="convertBtn" class="convert-btn" disabled>Convert Image</button>
+        <button id="clearBtn" class="clear-btn" disabled>Clear</button>
+
+        <div class="status" id="status"></div>
+    </div>
+
+    <!-- Include your existing footer -->
+    <footer class="site-footer">[...]</footer>
+
+    <script>
+        // File handling and preview
+        const fileInput = document.getElementById('fileInput');
+        const previewContainer = document.getElementById('previewContainer');
+        const imagePreview = document.getElementById('imagePreview');
+        const imageInfo = document.getElementById('imageInfo');
+        const convertBtn = document.getElementById('convertBtn');
+        const clearBtn = document.getElementById('clearBtn');
+        const statusDiv = document.getElementById('status');
+        const qualitySlider = document.getElementById('quality');
+        const qualityValue = document.getElementById('qualityValue');
+
+        let currentFile = null;
+
+        // Update quality value display
+        qualitySlider.addEventListener('input', () => {
+            qualityValue.textContent = qualitySlider.value;
+        });
+
+        // File input handler
+        fileInput.addEventListener('change', handleFileSelect);
+
+        function handleFileSelect(e) {
+            const file = e.target.files[0];
+            if (!file) return;
+
+            if (!file.type.match('image.*')) {
+                showStatus('Please select an image file (JPG, PNG, etc.)', 'error');
+                return;
+            }
+
+            currentFile = file;
+
+            const reader = new FileReader();
+            reader.onload = function (e) {
+                imagePreview.src = e.target.result;
+                previewContainer.style.display = 'block';
+
+                // Display image info
+                const img = new Image();
+                img.onload = function () {
+                    imageInfo.innerHTML = `
+                        <p><strong>Name:</strong> ${file.name}</p>
+                        <p><strong>Type:</strong> ${file.type}</p>
+                        <p><strong>Size:</strong> ${(file.size / 1024).toFixed(2)} KB</p>
+                        <p><strong>Dimensions:</strong> ${img.width} × ${img.height} px</p>
+                    `;
+                };
+                img.src = e.target.result;
+
+                convertBtn.disabled = false;
+                clearBtn.disabled = false;
+            };
+            reader.readAsDataURL(file);
+        }
+
+        // Convert button handler
+        convertBtn.addEventListener('click', convertImage);
+
+        function convertImage() {
+            if (!currentFile) return;
+
+            const outputFormat = document.querySelector('input[name="outputFormat"]:checked').value;
+            const quality = qualitySlider.value / 100;
+            const resizeWidth = document.getElementById('resizeWidth').value;
+            const resizeHeight = document.getElementById('resizeHeight').value;
+            const resizeUnit = document.getElementById('resizeUnit').value;
+
+            showStatus('Converting image...', 'info');
+
+            // Create canvas for conversion
+            const canvas = document.createElement('canvas');
+            const ctx = canvas.getContext('2d');
+            const img = new Image();
+
+            img.onload = function () {
+                // Handle resizing if specified
+                let newWidth = img.width;
+                let newHeight = img.height;
+
+                if (resizeWidth && resizeHeight) {
+                    if (resizeUnit === '%') {
+                        newWidth = img.width * (parseInt(resizeWidth) / 100);
+                        newHeight = img.height * (parseInt(resizeHeight) / 100);
+                    } else {
+                        newWidth = parseInt(resizeWidth);
+                        newHeight = parseInt(resizeHeight);
+                    }
+                }
+
+                canvas.width = newWidth;
+                canvas.height = newHeight;
+                ctx.drawImage(img, 0, 0, newWidth, newHeight);
+
+                // Convert to selected format
+                let mimeType;
+                switch (outputFormat) {
+                    case 'jpg': mimeType = 'image/jpeg'; break;
+                    case 'png': mimeType = 'image/png'; break;
+                    case 'webp': mimeType = 'image/webp'; break;
+                    case 'gif': mimeType = 'image/gif'; break;
+                    default: mimeType = 'image/jpeg';
+                }
+
+                // Handle quality (only for JPG/WEBP)
+                let qualityParam = quality;
+                if (mimeType === 'image/png') qualityParam = undefined;
+
+                canvas.toBlob(function (blob) {
+                    const url = URL.createObjectURL(blob);
+                    const a = document.createElement('a');
+                    a.href = url;
+                    a.download = `converted.${outputFormat}`;
+                    document.body.appendChild(a);
+                    a.click();
+                    document.body.removeChild(a);
+                    URL.revokeObjectURL(url);
+
+                    showStatus('Image converted and downloaded!', 'success');
+                }, mimeType, qualityParam);
+            };
+
+            img.src = URL.createObjectURL(currentFile);
+        }
+
+        // Clear button handler
+        clearBtn.addEventListener('click', clearAll);
+
+        function clearAll() {
+            fileInput.value = '';
+            previewContainer.style.display = 'none';
+            currentFile = null;
+            convertBtn.disabled = true;
+            clearBtn.disabled = true;
+            showStatus('', '');
+        }
+
+        function showStatus(message, type) {
+            statusDiv.textContent = message;
+            statusDiv.className = 'status ' + type;
+        }
+
+        // Drag and drop functionality
+        const dropArea = document.getElementById('dropArea');
+
+        ['dragenter', 'dragover', 'dragleave', 'drop'].forEach(eventName => {
+            dropArea.addEventListener(eventName, preventDefaults, false);
+        });
+
+        function preventDefaults(e) {
+            e.preventDefault();
+            e.stopPropagation();
+        }
+
+        ['dragenter', 'dragover'].forEach(eventName => {
+            dropArea.addEventListener(eventName, highlight, false);
+        });
+
+        ['dragleave', 'drop'].forEach(eventName => {
+            dropArea.addEventListener(eventName, unhighlight, false);
+        });
+
+        function highlight() {
+            dropArea.classList.add('highlight');
+        }
+
+        function unhighlight() {
+            dropArea.classList.remove('highlight');
+        }
+
+        dropArea.addEventListener('drop', handleDrop, false);
+
+        function handleDrop(e) {
+            const dt = e.dataTransfer;
+            const file = dt.files[0];
+            fileInput.files = dt.files;
+            handleFileSelect({ target: { files: [file] } });
+        }
+    </script>
+</body>
+
+</html>

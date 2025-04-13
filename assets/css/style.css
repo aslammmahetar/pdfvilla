@@ -8,222 +8,107 @@
     --danger-color: #dc3545;
     --border-radius: 8px;
     --box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-}
-
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    --default-font: "Roboto", system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", "Liberation Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+    --heading-font: "Nunito", sans-serif;
+    --nav-font: "Inter", sans-serif;
 }
 
 body {
-    background-color: #f5f5f5;
-    color: var(--dark-color);
-    line-height: 1.6;
-    padding: 20px;
-    user-select: none;
-    -webkit-user-select: none;
+    color: var(--default-color);
+    background-color: var(--background-color);
+    font-family: var(--default-font);
 }
 
-/* Navbar Styles */
-.navbar {
-    background-color: #ffffff;
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-    padding: 15px 0;
-    position: sticky;
-    top: 0;
-    z-index: 1000;
+.header {
+    --background-color: rgba(255, 255, 255, 0);
+    color: var(--default-color);
+    background-color: var(--background-color);
+    padding: 20px 0;
+    transition: all 0.5s;
+    z-index: 997;
 }
 
-.navbar-container {
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 0 20px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+.header .header-container {
+    background: var(--surface-color);
+    border-radius: 50px;
+    padding: 5px 25px;
+    box-shadow: 0px 2px 15px rgba(0, 0, 0, 0.1);
 }
 
-.navbar-brand {
-    display: flex;
-    align-items: center;
+.scrolled .header .header-container {
+    background: color-mix(in srgb, var(--surface-color), transparent 5%);
 }
 
-.logo {
-    height: 60px;
-    margin-right: 10px;
+.header .logo {
+    line-height: 1;
+    padding-left: 5px;
 }
 
-.brand-name {
-    font-size: 1.5rem;
-    font-weight: 700;
-    color: var(--primary-color);
-    text-decoration: none;
+.header .logo img {
+    max-height: 46px;
+    margin-right: 8px;
 }
 
-.navbar-nav {
-    display: flex;
-    list-style: none;
+.header .logo h1 {
+    font-size: 24px;
     margin: 0;
-    padding: 0;
-}
-
-.nav-item {
-    position: relative;
-    margin-left: 20px;
-}
-
-.nav-link {
-    color: var(--dark-color);
-    text-decoration: none;
     font-weight: 500;
-    padding: 8px 12px;
-    transition: color 0.3s;
+    color: var(--heading-color);
 }
 
-.nav-link:hover {
-    color: var(--primary-color);
-}
-
-/* Dropdown Menu Styles */
-.dropdown {
-    margin-top: -7px;
-    cursor: pointer;
-}
-
-.dropdown-menu {
-    position: absolute;
-    right: 0;
-    top: 100%;
-    background-color: #ffffff;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
-    border-radius: var(--border-radius);
-    padding: 10px 0;
-    min-width: 200px;
-    opacity: 0;
-    visibility: hidden;
-    transition: all 0.3s ease;
-    z-index: 1000;
-}
-
-.dropdown:hover .dropdown-menu {
-    opacity: 1;
-    visibility: visible;
-}
-
-.dropdown-menu li {
-    padding: 0;
-    margin: 0;
-    cursor: pointer;
-}
-
-.dropdown-menu a {
-    display: block;
+.header .btn-getstarted,
+.header .btn-getstarted:focus {
+    color: var(--contrast-color);
+    background: var(--accent-color);
+    font-size: 14px;
     padding: 8px 20px;
-    color: var(--dark-color);
-    text-decoration: none;
-    transition: all 0.3s;
+    margin: 0 0 0 30px;
+    border-radius: 50px;
+    transition: 0.3s;
 }
 
-.dropdown-menu a:hover {
-    background-color: rgba(74, 111, 165, 0.1);
-    color: var(--primary-color);
+.header .btn-getstarted:hover,
+.header .btn-getstarted:focus:hover {
+    color: var(--contrast-color);
+    background: color-mix(in srgb, var(--accent-color), transparent 15%);
 }
 
-.dropdown-icon {
-    font-size: 0.7em;
-    margin-left: 5px;
-}
-
-/* Mobile Menu Styles */
-.navbar-toggle {
-    display: none;
-    background: none;
-    border: none;
-    cursor: pointer;
-    padding: 10px;
-}
-
-.navbar-toggle span {
-    display: block;
-    width: 25px;
-    height: 3px;
-    background-color: var(--primary-color);
-    margin: 4px 0;
-    transition: all 0.3s;
-}
-
-/* Responsive Styles */
-@media (max-width: 768px) {
-    .navbar-menu {
-        position: fixed;
-        top: 70px;
-        left: -100%;
-        width: 80%;
-        height: calc(100vh - 70px);
-        background-color: #ffffff;
-        box-shadow: 2px 0 10px rgba(0, 0, 0, 0.1);
-        transition: all 0.3s ease;
-        overflow-y: auto;
+@media (max-width: 1200px) {
+    .header {
+        padding-top: 10px;
     }
 
-    .navbar-menu.active {
-        left: 0;
+    .header .header-container {
+        margin-left: 10px;
+        margin-right: 10px;
+        padding: 10px 5px 10px 15px;
     }
 
-    .navbar-nav {
-        flex-direction: column;
-        padding: 20px;
+    .header .logo {
+        order: 1;
     }
 
-    .nav-item {
-        margin: 10px 0;
+    .header .btn-getstarted {
+        order: 2;
+        margin: 0 10px 0 0;
+        padding: 6px 15px;
     }
 
-    .dropdown-menu {
-        position: static;
-        box-shadow: none;
-        opacity: 1;
-        visibility: visible;
-        display: none;
-        padding-left: 20px;
-    }
-
-    .dropdown.active .dropdown-menu {
-        display: block;
-    }
-
-    .navbar-toggle {
-        display: block;
-    }
-
-    .navbar-toggle.active span:nth-child(1) {
-        transform: rotate(45deg) translate(5px, 5px);
-    }
-
-    .navbar-toggle.active span:nth-child(2) {
-        opacity: 0;
-    }
-
-    .navbar-toggle.active span:nth-child(3) {
-        transform: rotate(-45deg) translate(5px, -5px);
+    .header .navmenu {
+        order: 3;
     }
 }
 
-.container {
-    max-width: 1000px;
-    margin: 25px auto;
-    background-color: white;
-    padding: 30px;
-    border-radius: var(--border-radius);
-    box-shadow: var(--box-shadow);
+.converter-container {
+    margin-top: 120px;
+    padding: 25px;
 }
 
 h1 {
     color: var(--primary-color);
     text-align: center;
     margin-bottom: 10px;
+    font-family: var(--heading-font);
 }
 
 .subtitle {
@@ -268,6 +153,43 @@ h1 {
     height: 60px;
     margin-bottom: 15px;
     opacity: 0.7;
+}
+
+/* CSS */
+.button-44 {
+    background: #4162a8;
+    border-top: 1px solid #38538c;
+    border-right: 1px solid #1f2d4d;
+    border-bottom: 1px solid #151e33;
+    border-left: 1px solid #1f2d4d;
+    -webkit-border-radius: 4px;
+    -moz-border-radius: 4px;
+    border-radius: 4px;
+    -webkit-box-shadow: inset 0 1px 10px 1px #5c8bee, 0px 1px 0 #1d2c4d, 0 6px 0px #1f3053, 0 8px 4px 1px #111111;
+    -moz-box-shadow: inset 0 1px 10px 1px #5c8bee, 0px 1px 0 #1d2c4d, 0 6px 0px #1f3053, 0 8px 4px 1px #111111;
+    box-shadow: inset 0 1px 10px 1px #5c8bee, 0px 1px 0 #1d2c4d, 0 6px 0px #1f3053, 0 8px 4px 1px #111111;
+    color: #fff;
+    font: bold 20px "helvetica neue", helvetica, arial, sans-serif;
+    line-height: 1;
+    padding: 10px 0 12px 0;
+    text-align: center;
+    text-shadow: 0px -1px 1px #1e2d4d;
+    width: 150px;
+    -webkit-background-clip: padding-box;
+}
+
+.button-44:hover {
+    -webkit-box-shadow: inset 0 0px 20px 1px #87adff, 0px 1px 0 #1d2c4d, 0 6px 0px #1f3053, 0 8px 4px 1px #111111;
+    -moz-box-shadow: inset 0 0px 20px 1px #87adff, 0px 1px 0 #1d2c4d, 0 6px 0px #1f3053, 0 8px 4px 1px #111111;
+    box-shadow: inset 0 0px 20px 1px #87adff, 0px 1px 0 #1d2c4d, 0 6px 0px #1f3053, 0 8px 4px 1px #111111;
+    cursor: pointer;
+}
+
+.button-44:active {
+    -webkit-box-shadow: inset 0 1px 10px 1px #5c8bee, 0 1px 0 #1d2c4d, 0 2px 0 #1f3053, 0 4px 3px 0 #111111;
+    -moz-box-shadow: inset 0 1px 10px 1px #5c8bee, 0 1px 0 #1d2c4d, 0 2px 0 #1f3053, 0 4px 3px 0 #111111;
+    box-shadow: inset 0 1px 10px 1px #5c8bee, 0 1px 0 #1d2c4d, 0 2px 0 #1f3053, 0 4px 3px 0 #111111;
+    transform: translateY(4px);
 }
 
 .preview-container {
@@ -327,13 +249,14 @@ h1 {
 .options {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-    gap: 20px;
+    gap: 30px;
     margin-bottom: 30px;
 }
 
 .option-group {
     display: flex;
     flex-direction: column;
+    justify-content: flex-end;
 }
 
 .option-group label {
@@ -621,7 +544,7 @@ footer {
 
 /* privacy page CSS */
 .privacy-container {
-    max-width: 800px;
+    max-width: 1200px;
     margin: 40px auto;
     padding: 30px;
     background-color: white;
@@ -802,8 +725,8 @@ footer {
 
 /* about page css */
 .about-container {
-    max-width: 1000px;
-    margin: 40px auto;
+    max-width: 1200px;
+    margin: 100px auto;
     padding: 30px;
     background-color: white;
     border-radius: var(--border-radius);

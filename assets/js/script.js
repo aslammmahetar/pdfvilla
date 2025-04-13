@@ -9,15 +9,15 @@ document.addEventListener('DOMContentLoaded', function () {
     // Mobile menu functionality
     document.addEventListener('contextmenu', event => event.preventDefault());
     // Debugger protection
-    setInterval(function () {
-        if (typeof console !== 'undefined') {
-            console.clear();
-        }
-        if (typeof console !== 'undefined' && console.log) {
-            console.log('%cStop!', 'color:red;font-size:40px');
-            console.log('%cThis browser feature is for developers only.', 'font-size:20px');
-        }
-    }, 1000);
+    // setInterval(function () {
+    //     if (typeof console !== 'undefined') {
+    //         console.clear();
+    //     }
+    //     if (typeof console !== 'undefined' && console.log) {
+    //         console.log('%cStop!', 'color:red;font-size:40px');
+    //         console.log('%cThis browser feature is for developers only.', 'font-size:20px');
+    //     }
+    // }, 1000);
 
     // Break devtools
     window.addEventListener('devtoolschange', event => {
@@ -35,15 +35,15 @@ document.addEventListener('DOMContentLoaded', function () {
     //     console.log('%c', re);
     // })();
 
-    const mobileMenuToggle = document.getElementById('mobile-menu-toggle');
+    // const mobileMenuToggle = document.getElementById('mobile-menu-toggle');
     const navbarMenu = document.querySelector('.navbar-menu');
     const dropdownToggles = document.querySelectorAll('.dropdown-toggle');
 
     // Toggle mobile menu
-    mobileMenuToggle.addEventListener('click', function () {
-        this.classList.toggle('active');
-        navbarMenu.classList.toggle('active');
-    });
+    // mobileMenuToggle.addEventListener('click', function () {
+    //     this.classList.toggle('active');
+    //     navbarMenu.classList.toggle('active');
+    // });
 
     // Toggle dropdowns on mobile
     dropdownToggles.forEach(toggle => {
@@ -57,16 +57,17 @@ document.addEventListener('DOMContentLoaded', function () {
     });
 
     // Close mobile menu when clicking a link
-    document.querySelectorAll('.navbar-menu a').forEach(link => {
-        link.addEventListener('click', function () {
-            if (window.innerWidth <= 768) {
-                mobileMenuToggle.classList.remove('active');
-                navbarMenu.classList.remove('active');
-            }
-        });
-    });
+    // document.querySelectorAll('.navbar-menu a').forEach(link => {
+    //     link.addEventListener('click', function () {
+    //         if (window.innerWidth <= 768) {
+    //             mobileMenuToggle.classList.remove('active');
+    //             navbarMenu.classList.remove('active');
+    //         }
+    //     });
+    // });
     // Initialize variables
     const fileInput = document.getElementById('fileInput');
+    const selectFiles = document.getElementById('selectFiles');
     const dropArea = document.getElementById('dropArea');
     const previewContainer = document.getElementById('previewContainer');
     const imageGrid = document.getElementById('imageGrid');
@@ -100,6 +101,12 @@ document.addEventListener('DOMContentLoaded', function () {
     // Event listener for file input change
     fileInput.addEventListener('change', (e) => {
         handleFiles(e.target.files);
+    });
+
+    selectFiles.addEventListener('click', function (e) {
+        e.preventDefault();
+        e.stopPropagation();
+        fileInput.click();
     });
 
     // Event listener for convert button

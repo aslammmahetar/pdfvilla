@@ -75,7 +75,7 @@
 
             <nav id="navmenu" class="navmenu">
                 <ul>
-                    <li><a href="#hero" class="active">Home</a></li>
+                    <li><a href="index.html" class="active">Home</a></li>
                     <li><a href="about.html">About</a></li>
                     <!-- <li><a href="#features">Features</a></li> -->
                     <!-- <li><a href="#services">Services</a></li> -->
@@ -84,6 +84,7 @@
                                 class="bi bi-chevron-down toggle-dropdown"></i></a>
                         <ul>
                             <li><a href="img-to-pdf.html">Image To PDF Converter</a></li>
+                            <li><a href="word-to-pdf.html">Word To PDF Converter</a></li>
                             <!-- <li class="dropdown"><a href="#"><span>Deep Dropdown</span> <i
                           class="bi bi-chevron-down toggle-dropdown"></i></a>
                       <ul>
@@ -103,16 +104,17 @@
                 </ul>
                 <i class="mobile-nav-toggle d-xl-none bi bi-list"></i>
             </nav>
-            <a class="btn-getstarted" href="#tools">Get Started</a>
+            <a class="btn-getstarted" href="index.html#tools">Get Started</a>
         </div>
     </header>
     <div class="container converter-container">
-        <h1>Image to PDF Converter</h1>
-        <p class="subtitle">Convert your images to PDF files easily</p>
+        <h1>Free Image to PDF Converter</h1>
+        <h2 class="text-center">Convert JPG, PNG, WEBP to PDF in Seconds</h2>
         <div class="upload-area" id="dropArea">
             <input type="file" id="fileInput" accept="image /*" multiple>
             <label for="fileInput" class="upload-label">
-                <img src="https://cdn-icons-png.flaticon.com/512/2919/2919593.png" alt="Upload" class="upload-icon">
+                <img src="https://cdn-icons-png.flaticon.com/512/2919/2919593.png" alt="image to pdf converter"
+                    class="upload-icon">
                 <h3>Drag & drop images here or click to browse</h3>
                 <button class="button-44" id="selectFiles" role="button"><span class="text">Select Files</span></button>
             </label>
@@ -155,15 +157,71 @@
 
         <div class="status" id="status"></div>
     </div>
-    <section class="container">
-        <h3>Why Use PDFVilla Image to PDF Converter?</h3>
-        <ul class="benefits">
-            <li>✅ 100% free with no watermarks</li>
-            <li>✅ No registration required</li>
-            <li>✅ Works on all devices (mobile, tablet, desktop)</li>
-            <li>✅ Preserves original image quality</li>
-            <li>✅ Secure processing (files never leave your browser)</li>
-        </ul>
+    <section class="seo-sections">
+        <div class="container">
+            <!-- How to Use Section -->
+            <div class="seo-section">
+                <h2>How to Convert Images to PDF</h2>
+                <div class="steps">
+                    <div class="step">
+                        <div class="step-number">1</div>
+                        <div class="step-content">
+                            <h3>Upload Your Images</h3>
+                            <p>Click "Select Files" or drag & drop JPG, PNG, or other image files into the upload area.
+                                You
+                                can select multiple images at once.</p>
+                        </div>
+                    </div>
+                    <div class="step">
+                        <div class="step-number">2</div>
+                        <div class="step-content">
+                            <h3>Adjust Settings (Optional)</h3>
+                            <p>Customize page size (A4, Letter), orientation (Portrait/Landscape), and margins to
+                                control
+                                how images appear in your PDF.</p>
+                        </div>
+                    </div>
+                    <div class="step">
+                        <div class="step-number">3</div>
+                        <div class="step-content">
+                            <h3>Generate & Download</h3>
+                            <p>Click "Convert to PDF" to combine all images into one PDF file. Your download will start
+                                automatically.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Why Use Our Tool Section -->
+            <div class="seo-section">
+                <h2>Why Use Our Image to PDF Converter?</h2>
+                <div class="benefits">
+                    <div class="benefit-card">
+                        <div class="benefit-icon">🛡️</div>
+                        <h3>Complete Privacy</h3>
+                        <p>On PDFVilla All processing happens in your browser - your images never get uploaded to any
+                            server.</p>
+                    </div>
+                    <div class="benefit-card">
+                        <div class="benefit-icon">🎛️</div>
+                        <h3>Full Control</h3>
+                        <p>Adjust page layout, image positioning, and quality to create perfect PDFs every time.</p>
+                    </div>
+                    <div class="benefit-card">
+                        <div class="benefit-icon">📱</div>
+                        <h3>Works Anywhere</h3>
+                        <p>Convert photos to PDF from your computer, tablet, or smartphone with equal ease with
+                            PDFVilla.</p>
+                    </div>
+                    <div class="benefit-card">
+                        <div class="benefit-icon">💸</div>
+                        <h3>100% Free</h3>
+                        <p>No watermarks, no registration, no hidden fees On PDFVilla - unlimited conversions at no
+                            cost.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
     </section>
     <section id="testimonials" class="testimonials section light-background">
         <!-- Section Title -->
@@ -431,7 +489,8 @@
                 </div>
             </div>
         </div>
-    </section><!-- /Contact Section -->
+    </section>
+    <!-- /Contact Section -->
     </main>
 
     <footer id="footer" class="footer">
@@ -459,11 +518,11 @@
                 <div class="col-lg-2 col-md-3 footer-links">
                     <h4>Useful Links</h4>
                     <ul>
-                        <li><a href="#">Home</a></li>
-                        <li><a href="#about.html">About us</a></li>
-                        <li><a href="#tools">Tools</a></li>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="about.html">About us</a></li>
+                        <li><a href="index.html#tools">Tools</a></li>
                         <li><a href="#">Terms of service</a></li>
-                        <li><a href="#">Privacy policy</a></li>
+                        <li><a href="privacy.html">Privacy policy</a></li>
                     </ul>
                 </div>
 
@@ -522,6 +581,32 @@
     <script src="assets/vendor/purecounter/purecounter_vanilla.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
     <script src="assets/js/main.js"></script>
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "HowTo",
+      "name": "How to Convert Images to PDF",
+      "description": "Step-by-step guide to convert JPG/PNG images to PDF documents",
+      "totalTime": "PT1M",
+      "step": [
+        {
+          "@type": "HowToStep",
+          "text": "Upload your images by clicking Select Files or dragging them into the upload area",
+          "image": "https://yourdomain.com/images/upload-step.jpg"
+        },
+        {
+          "@type": "HowToStep",
+          "text": "Adjust PDF settings like page size and orientation if needed",
+          "image": "https://yourdomain.com/images/settings-step.jpg"
+        },
+        {
+          "@type": "HowToStep",
+          "text": "Click Convert to PDF and download your combined document",
+          "image": "https://yourdomain.com/images/download-step.jpg"
+        }
+      ]
+    }
+    </script>
 </body>
 
 </html>

@@ -1,0 +1,687 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <!-- Primary Meta Tags -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Free Word to PDF Converter | Free Online Tool | PDFVilla</title>
+    <meta name="description"
+        content="Convert Word documents to PDF for free online. Preserve formatting and tables. No registration required, works in your browser.">
+    <meta name="keywords"
+        content="word to pdf, docx to pdf, convert word to pdf, online pdf converter, microsoft word to pdf">
+    <link rel="icon" href="assets/img/favicon.ico" type="image/x-icon">
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://aslammmahetar.github.io/pdfvilla/word-to-pdf.html">
+    <meta property="og:title" content="Word to PDF Converter | Free Online Tool | PDFVilla">
+    <meta property="og:description"
+        content="Convert Word to PDF with formatting and tables preserved. 100% free online tool.">
+    <meta property="og:image" content="https://aslammmahetar.github.io/pdfvilla/images/word-to-pdf-og.jpg">
+
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://aslammmahetar.github.io/pdfvilla/word-to-pdf.html">
+    <meta property="twitter:title" content="Word to PDF Converter | Free Online Tool | PDFVilla">
+    <meta property="twitter:description"
+        content="Convert Word to PDF with formatting and tables preserved. 100% free online tool.">
+    <meta property="twitter:image" content="https://aslammmahetar.github.io/pdfvilla/images/word-to-pdf-og.jpg">
+
+    <!-- Canonical URL -->
+    <link rel="canonical" href="https://aslammmahetar.github.io/pdfvilla/word-to-pdf.html">
+    <meta name="google-site-verification" content="1rKXcJTQMWtMJxy6f20B0dNTvohGt8aA7jkgqkKYwJg" />
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-85PRXMJ9YE"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
+        gtag('config', 'G-85PRXMJ9YE');
+        gtag('event', 'pdf_converted', {
+            'file_format': 'PDF',
+            'method': 'drag_and_drop'
+        });
+    </script>
+    <!-- Favicon -->
+    <link rel="icon" href="assets/images/favicon.ico">
+    <script src="https://unpkg.com/pdf-lib@1.17.1/dist/pdf-lib.min.js"></script>
+    <script src="https://unpkg.com/downloadjs@1.4.7"></script>
+    <script src="https://unpkg.com/fontkit@1.8.1/dist/fontkit.umd.min.js"></script>
+    <script src="https://unpkg.com/pdf-lib@1.17.1/dist/pdf-lib.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mammoth/1.4.0/mammoth.browser.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/fontkit@1.8.1/dist/fontkit.umd.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mammoth/1.4.0/mammoth.browser.min.js"></script>
+    <script src="https://unpkg.com/downloadjs@1.4.7"></script>
+    <!-- Add these to your head section -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mammoth/1.4.0/mammoth.browser.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+    <!-- Schema.org markup -->
+    <script type="application/ld+json">
+        {
+          "@context": "https://schema.org",
+          "@type": "WebApplication",
+          "name": "Word to PDF Converter",
+          "url": "https://aslammmahetar.github.io/pdfvilla/word-to-pdf.html",
+          "description": "Free online tool to convert Microsoft Word documents to PDF format while preserving formatting and tables.",
+          "applicationCategory": "DocumentConverter",
+          "operatingSystem": "Any",
+          "offers": {
+            "@type": "Offer",
+            "price": "0",
+            "priceCurrency": "USD"
+          }
+        }
+        </script>
+    <link href="https://fonts.googleapis.com" rel="preconnect">
+    <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&family=Inter:wght@100;200;300;400;500;600;700;800;900&family=Nunito:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+        rel="stylesheet">
+    <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link href="assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+    <link href="assets/vendor/aos/aos.css" rel="stylesheet">
+    <link href="assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
+    <link href="assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="assets/css/style.css">
+
+    <link rel="stylesheet" href="assets/css/main.css">
+
+    <!-- CSS -->
+    <style>
+        .format-options {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
+            margin: 25px 0;
+        }
+
+        .preview-content {
+            border: 1px solid #ddd;
+            padding: 15px;
+            min-height: 200px;
+            margin-top: 20px;
+            border-radius: var(--border-radius);
+            background-color: #f9f9f9;
+        }
+
+        .status {
+            margin-top: 20px;
+            padding: 10px;
+            border-radius: var(--border-radius);
+            text-align: center;
+            display: none;
+        }
+
+        .status.success {
+            background-color: rgba(40, 167, 69, 0.2);
+            color: #28a745;
+            display: block;
+        }
+
+        .status.error {
+            background-color: rgba(220, 53, 69, 0.2);
+            color: #dc3545;
+            display: block;
+        }
+
+        .status.info {
+            background-color: rgba(23, 162, 184, 0.2);
+            color: #17a2b8;
+            display: block;
+        }
+    </style>
+</head>
+
+<body>
+    <header id="header" class="header d-flex align-items-center fixed-top">
+        <div class="header-container container-fluid container-xl position-relative d-flex align-items-center
+            justify-content-between">
+            <a href="index.html" class="logo d-flex align-items-center me-auto me-xl-0">
+                <!-- Uncomment the line below if you also wish to use an image logo -->
+                <!-- <img src="assets/img/logo.png" alt=""> -->
+                <img src="assets/img/logo.png" />
+            </a>
+
+            <nav id="navmenu" class="navmenu">
+                <ul>
+                    <li><a href="index.html" class="active">Home</a></li>
+                    <li><a href="about.html">About</a></li>
+                    <!-- <li><a href="#features">Features</a></li> -->
+                    <!-- <li><a href="#services">Services</a></li> -->
+                    <!-- <li><a href="#pricing">Pricing</a></li> -->
+                    <li class="dropdown"><a href="#"><span>Tools</span> <i
+                                class="bi bi-chevron-down toggle-dropdown"></i></a>
+                        <ul>
+                            <li><a href="img-to-pdf.html">Image To PDF Converter</a></li>
+                            <li><a href="word-to-pdf.html">Word To PDF Converter</a></li>
+                            <!-- <li class="dropdown"><a href="#"><span>Deep Dropdown</span> <i
+                          class="bi bi-chevron-down toggle-dropdown"></i></a>
+                      <ul>
+                        <li><a href="#">Deep Dropdown 1</a></li>
+                        <li><a href="#">Deep Dropdown 2</a></li>
+                        <li><a href="#">Deep Dropdown 3</a></li>
+                        <li><a href="#">Deep Dropdown 4</a></li>
+                        <li><a href="#">Deep Dropdown 5</a></li>
+                      </ul>
+                    </li> -->
+                            <!-- <li><a href="image-converter.html">Image Converter</a></li> -->
+                            <li><a href="#">Comming Soon...</a></li>
+                            <li><a href="#">Comming Soon...</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="Contact.html">Contact</a></li>
+                </ul>
+                <i class="mobile-nav-toggle d-xl-none bi bi-list"></i>
+            </nav>
+            <a class="btn-getstarted" href="#tools">Get Started</a>
+        </div>
+    </header>
+    <main class="container converter-container">
+        <div>
+            <h1>Free Word to PDF Converter</h1>
+            <h2 class="text-center">Convert DOC/DOCX to PDF in 3 Seconds</h2>
+            <div class="upload-area" id="dropArea">
+                <input type="file" id="fileInput" accept=".docx,.doc">
+                <label for="fileInput" class="upload-label">
+                    <img src="https://cdn-icons-png.flaticon.com/512/2919/2919593.png" alt="Upload" class="upload-icon">
+                    <h3>Drag & drop Word file or click to browse</h3>
+                    <p class="file-requirements">Supports .docx and .doc files (max 10MB)</p>
+                    <button class="button-44" id="selectFiles" role="button"><span class="text">Select
+                            Files</span></button>
+                </label>
+            </div>
+            <div class="options">
+                <div class="option-group">
+                    <label>Page Size: </label>
+                    <select id="pageSize">
+                        <option value="A4">A4</option>
+                        <option value="Letter">Letter</option>
+                        <option value="Legal">Legal</option>
+                    </select>
+                </div>
+                <div class="option-group">
+                    <label>Margin (mm):</label>
+                    <input type="number" id="marginSize" value="20" min="0" max="50">
+                </div>
+                <div class="option-group">
+                    <label><input type="checkbox" id="preserveFormatting" checked>&nbsp;Preserve formatting</label>
+                </div>
+                <div class="option-group">
+                    <label><input type="checkbox" id="includeImages" checked>&nbsp;Include images</label>
+                </div>
+            </div>
+            <button id="convertBtn" class="btn convert-btn" disabled>Convert to PDF</button>
+            <button id="clearBtn" class="clear-btn" disabled>Clear All</button>
+        </div>
+        <div class="status" id="statusDiv">
+            <p id="status"></p>
+        </div>
+
+    </main>
+    <!-- Add this section right before your footer -->
+    <section class="seo-sections">
+        <div class="container">
+            <!-- How to Use Section -->
+            <div class="seo-section">
+                <h2>How to Convert Word to PDF</h2>
+                <div class="steps">
+                    <div class="step">
+                        <div class="step-number">1</div>
+                        <div class="step-content">
+                            <h3>Upload Your Document</h3>
+                            <p>Click the "Select Files" button or drag and drop your Word file (.doc or .docx) into the
+                                upload area.</p>
+                        </div>
+                    </div>
+                    <!-- <div class="step">
+                        <div class="step-number">2</div>
+                        <div class="step-content">
+                            <h3>Preview Content (Optional)</h3>
+                            <p>Review your document in the preview section to ensure everything looks correct before
+                                conversion.</p>
+                        </div>
+                    </div> -->
+                    <div class="step">
+                        <div class="step-number">2</div>
+                        <div class="step-content">
+                            <h3>Convert and Download</h3>
+                            <p>Click the "Convert to PDF" button to instantly generate and download your PDF file.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Why Use Our Tool Section -->
+            <div class="seo-section">
+                <h2>Why Use Our Word to PDF Converter?</h2>
+                <div class="benefits">
+                    <div class="benefit-card">
+                        <div class="benefit-icon">🔒</div>
+                        <h3>100% Secure Processing</h3>
+                        <p>On PDFVilla All conversions happen in your browser - your files never leave your device,
+                            ensuring
+                            complete
+                            privacy.</p>
+                    </div>
+                    <div class="benefit-card">
+                        <div class="benefit-icon">⚡</div>
+                        <h3>Instant Conversion</h3>
+                        <p>Get your PDF in seconds on PDFVilla without waiting in queues or dealing with slow servers.
+                        </p>
+                    </div>
+                    <div class="benefit-card">
+                        <div class="benefit-icon">🆓</div>
+                        <h3>Completely Free</h3>
+                        <p>No hidden charges, watermarks, or registration required on PDFVilla - use it as much as you
+                            need.</p>
+                    </div>
+                    <div class="benefit-card">
+                        <div class="benefit-icon">📱</div>
+                        <h3>Works on All Devices</h3>
+                        <p>Convert documents from your computer, tablet, or smartphone with equal ease.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Faq Section -->
+    <section class="faq-9 faq section light-background" id="faq">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-5" data-aos="fade-up">
+                    <h2 class="faq-title">Have a question? Check out the</h2>
+                    <p class="faq-description">Frequently Asked Questions to PDFVilla team</p>
+                    <div class="faq-arrow d-none d-lg-block" data-aos="fade-up" data-aos-delay="200">
+                        <svg class="faq-arrow" width="200" height="211" viewBox="0 0 200 211" fill="none"
+                            xmlns="http://www.w3.org/2000/svg">
+                            <path
+                                d="M198.804 194.488C189.279 189.596 179.529 185.52 169.407 182.07L169.384 182.049C169.227 181.994 169.07 181.939 168.912 181.884C166.669 181.139 165.906 184.546 167.669 185.615C174.053 189.473 182.761 191.837 189.146 195.695C156.603 195.912 119.781 196.591 91.266 179.049C62.5221 161.368 48.1094 130.695 56.934 98.891C84.5539 98.7247 112.556 84.0176 129.508 62.667C136.396 53.9724 146.193 35.1448 129.773 30.2717C114.292 25.6624 93.7109 41.8875 83.1971 51.3147C70.1109 63.039 59.63 78.433 54.2039 95.0087C52.1221 94.9842 50.0776 94.8683 48.0703 94.6608C30.1803 92.8027 11.2197 83.6338 5.44902 65.1074C-1.88449 41.5699 14.4994 19.0183 27.9202 1.56641C28.6411 0.625793 27.2862 -0.561638 26.5419 0.358501C13.4588 16.4098 -0.221091 34.5242 0.896608 56.5659C1.8218 74.6941 14.221 87.9401 30.4121 94.2058C37.7076 97.0203 45.3454 98.5003 53.0334 98.8449C47.8679 117.532 49.2961 137.487 60.7729 155.283C87.7615 197.081 139.616 201.147 184.786 201.155L174.332 206.827C172.119 208.033 174.345 211.287 176.537 210.105C182.06 207.125 187.582 204.122 193.084 201.144C193.346 201.147 195.161 199.887 195.423 199.868C197.08 198.548 193.084 201.144 195.528 199.81C196.688 199.192 197.846 198.552 199.006 197.935C200.397 197.167 200.007 195.087 198.804 194.488ZM60.8213 88.0427C67.6894 72.648 78.8538 59.1566 92.1207 49.0388C98.8475 43.9065 106.334 39.2953 114.188 36.1439C117.295 34.8947 120.798 33.6609 124.168 33.635C134.365 33.5511 136.354 42.9911 132.638 51.031C120.47 77.4222 86.8639 93.9837 58.0983 94.9666C58.8971 92.6666 59.783 90.3603 60.8213 88.0427Z"
+                                fill="currentColor"></path>
+                        </svg>
+                    </div>
+                </div>
+
+                <div class="col-lg-7" data-aos="fade-up" data-aos-delay="300">
+                    <div class="faq-container">
+
+                        <div class="faq-item faq-active">
+                            <h3>1. How do I convert a Word document to PDF for free on PDFVilaa?</h3>
+                            <div class="faq-content">
+                                <p>Our free online tool lets you convert Word to PDF in 3 simple steps: upload your
+                                    DOC/DOCX file, review the content, and
+                                    click "Convert". No registration or payment required.</p>
+                            </div>
+                            <i class="faq-toggle bi bi-chevron-right"></i>
+                        </div><!-- End Faq item-->
+
+                        <div class="faq-item">
+                            <h3>2. Does this converter preserve my Word document formatting?</h3>
+                            <div class="faq-content">
+                                <p>Yes! Our tool maintains text formatting (bold, italics, fonts) and basic layout. For
+                                    complex documents with advanced
+                                    elements, we recommend reviewing the PDF preview before downloading.</p>
+                            </div>
+                            <i class="faq-toggle bi bi-chevron-right"></i>
+                        </div><!-- End Faq item-->
+
+                        <div class="faq-item">
+                            <h3>3. Is there a file size limit for conversion?</h3>
+                            <div class="faq-content">
+                                <p>We support Word files up to 10MB. For larger documents, try compressing images in
+                                    your Word file before conversion or
+                                    split the document into smaller parts.
+                                </p>
+                            </div>
+                            <i class="faq-toggle bi bi-chevron-right"></i>
+                        </div><!-- End Faq item-->
+
+                        <div class="faq-item">
+                            <h3>4. Can I convert multiple Word files to PDF at once?</h3>
+                            <div class="faq-content">
+                                <p>Currently, our tool processes one file at a time for optimal quality. For batch
+                                    conversion, simply repeat the process
+                                    for each document - it only takes seconds per file.</p>
+                            </div>
+                            <i class="faq-toggle bi bi-chevron-right"></i>
+                        </div><!-- End Faq item-->
+
+                        <div class="faq-item">
+                            <h3>5. How secure is my document during conversion?</h3>
+                            <div class="faq-content">
+                                <p>100% secure. Your file never leaves your browser - all processing happens locally on
+                                    your device. We don't store or
+                                    access your documents after conversion.</p>
+                            </div>
+                            <i class="faq-toggle bi bi-chevron-right"></i>
+                        </div><!-- End Faq item-->
+
+                        <div class="faq-item">
+                            <h3>5. How secure is my document during conversion?</h3>
+                            <div class="faq-content">
+                                <p>100% secure. Your file never leaves your browser - all processing happens locally on
+                                    your device. We don't store or
+                                    access your documents after conversion.</p>
+                            </div>
+                            <i class="faq-toggle bi bi-chevron-right"></i>
+                        </div><!-- End Faq item-->
+                        <div class="faq-item">
+                            <h3>6. What Word versions are supported?</h3>
+                            <div class="faq-content">
+                                <p>We support all modern Word formats including DOCX (Word 2007+) and legacy DOC files
+                                    (Word 97-2003). Both Windows and
+                                    Mac-created documents work perfectly.</p>
+                            </div>
+                            <i class="faq-toggle bi bi-chevron-right"></i>
+                        </div><!-- End Faq item-->
+                        <div class="faq-item">
+                            <h3>7. Why is my converted PDF file larger than the original Word document?</h3>
+                            <div class="faq-content">
+                                <p>PDFs may sometimes be larger due to embedded fonts and uncompressed images. For
+                                    smaller PDFs, try reducing image sizes
+                                    in your Word file before conversion.</p>
+                            </div>
+                            <i class="faq-toggle bi bi-chevron-right"></i>
+                        </div><!-- End Faq item-->
+                        <div class="faq-item">
+                            <h3>8. Can I edit the PDF after conversion?</h3>
+                            <div class="faq-content">
+                                <p>PDFs are not directly editable like Word files. For edits, you'll need a PDF editor
+                                    or can convert the PDF back to Word
+                                    using a specialized tool.</p>
+                            </div>
+                            <i class="faq-toggle bi bi-chevron-right"></i>
+                        </div><!-- End Faq item-->
+                        <div class="faq-item">
+                            <h3>9. Does this work on mobile devices?</h3>
+                            <div class="faq-content">
+                                <p>Absolutely! Our Word to PDF converter works perfectly on smartphones and tablets.
+                                    Convert documents directly from your
+                                    mobile browser without installing apps.</p>
+                            </div>
+                            <i class="faq-toggle bi bi-chevron-right"></i>
+                        </div><!-- End Faq item-->
+                        <div class="faq-item">
+                            <h3>10. How is this different from Microsoft Word's "Save as PDF" feature?</h3>
+                            <div class="faq-content">
+                                <p>Our tool requires no software installation, works on any device with a browser, and
+                                    processes files locally for enhanced
+                                    privacy. It's ideal when you don't have Word installed or need quick conversion
+                                    on-the-go.</p>
+                            </div>
+                            <i class="faq-toggle bi bi-chevron-right"></i>
+                        </div><!-- End Faq item-->
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+    <!-- Contact Section -->
+    <section id="contact" class="contact section light-background">
+        <!-- Section Title -->
+        <div class="container section-title" data-aos="fade-up">
+            <h2>Contact</h2>
+            <p>Let’s Connect! The PDFVilla team is just a message away.</p>
+        </div><!-- End Section Title -->
+
+        <div class="container" data-aos="fade-up" data-aos-delay="100">
+            <div class="row g-4 g-lg-5">
+                <div class="col-lg-5">
+                    <div class="info-box" data-aos="fade-up" data-aos-delay="200">
+                        <h3>Contact Info</h3>
+                        <!-- <p>Praesent sapien massa, convallis a pellentesque nec, egestas non nisi. Vestibulum ante ipsum primis.
+                      </p> -->
+
+                        <div class="info-item" data-aos="fade-up" data-aos-delay="300">
+                            <div class="icon-box">
+                                <i class="bi bi-geo-alt"></i>
+                            </div>
+                            <div class="content">
+                                <h4>Our Location</h4>
+                                <p>PDFVilla,</p>
+                                <p>Ahmedabad,</p>
+                                <p>Gujrat, India</p>
+                            </div>
+                        </div>
+
+                        <div class="info-item" data-aos="fade-up" data-aos-delay="400">
+                            <div class="icon-box">
+                                <i class="bi bi-telephone"></i>
+                            </div>
+                            <div class="content">
+                                <h4>Phone Number</h4>
+                                <p><a href="callto:+919106353530">+91 9106353530</a></p>
+                            </div>
+                        </div>
+                        <div class="info-item" data-aos="fade-up" data-aos-delay="500">
+                            <div class="icon-box">
+                                <i class="bi bi-envelope"></i>
+                            </div>
+                            <div class="content">
+                                <h4>Email Address</h4>
+                                <p><a href="mailto:nawabthedeveloper@gmail.com">nawabthedeveloper@gmail.com</a></p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-lg-7">
+                    <div class="contact-form" data-aos="fade-up" data-aos-delay="300">
+                        <h3>Get In Touch</h3>
+                        <p>Have questions or feedback? We'd love to hear from you!</p>
+
+                        <form action="forms/contact.php" method="post" class="php-email-form" data-aos="fade-up"
+                            data-aos-delay="200">
+                            <div class="row gy-4">
+                                <div class="col-md-6">
+                                    <input type="text" name="name" class="form-control" placeholder="Your Name"
+                                        required="">
+                                </div>
+
+                                <div class="col-md-6 ">
+                                    <input type="email" class="form-control" name="email" placeholder="Your Email"
+                                        required="">
+                                </div>
+
+                                <div class="col-12">
+                                    <input type="text" class="form-control" name="subject" placeholder="Subject"
+                                        required="">
+                                </div>
+
+                                <div class="col-12">
+                                    <textarea class="form-control" name="message" rows="6" placeholder="Message"
+                                        required=""></textarea>
+                                </div>
+
+                                <div class="col-12 text-center">
+                                    <div class="loading">Loading</div>
+                                    <div class="error-message"></div>
+                                    <div class="sent-message">Your message has been sent. Thank you!</div>
+                                    <button type="submit" class="btn">Send Message</button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <footer id="footer" class="footer">
+        <div class="container footer-top">
+            <div class="row gy-4">
+                <div class="col-lg-4 col-md-6 footer-about">
+                    <a href="index.html" class="logo d-flex align-items-center">
+                        <img src="assets/img/logo.png" />
+                    </a>
+                    <div class="footer-contact pt-3 text-start">
+                        <p>PDFVilla</p>
+                        <p>Ahmedabad, Gujrat, India</p>
+                        <p class="mt-3"><strong>Phone:</strong> <a href="callto:+919106353530">+91 9106353530</a></p>
+                        <p><strong>Email:</strong> <a
+                                href="mailto:nawabthedeveloper@gmail.com">nawabthedeveloper@gmail.com</a></p>
+                    </div>
+                    <div class="social-links d-flex mt-4">
+                        <a href=""><i class="bi bi-twitter-x"></i></a>
+                        <a href=""><i class="bi bi-facebook"></i></a>
+                        <a href=""><i class="bi bi-instagram"></i></a>
+                        <a href=""><i class="bi bi-linkedin"></i></a>
+                    </div>
+                </div>
+
+                <div class="col-lg-2 col-md-3 footer-links">
+                    <h4>Useful Links</h4>
+                    <ul>
+                        <li><a href="#">Home</a></li>
+                        <li><a href="about.html">About us</a></li>
+                        <li><a href="#tools">Tools</a></li>
+                        <li><a href="#">Terms of service</a></li>
+                        <li><a href="#">Privacy policy</a></li>
+                    </ul>
+                </div>
+
+                <div class="col-lg-2 col-md-3 footer-links">
+                    <h4>Our Tools</h4>
+                    <ul>
+                        <li><a href="img-to-pdf.html">Image to PDF Converter</a></li>
+                        <li><a href="word-to-pdf.html">Word to PDF Converter</a></li>
+                        <li><a href="#">Excel To PDF Converter</a></li>
+                        <li><a href="#">Merge PDF</a></li>
+                        <li><a href="#">Split PDF</a></li>
+                        <!-- <li><a href="#">Graphic Design</a></li> -->
+                    </ul>
+                </div>
+
+                <!-- <div class="col-lg-2 col-md-3 footer-links">
+                  <h4>Hic solutasetp</h4>
+                  <ul>
+                    <li><a href="#">Molestiae accusamus iure</a></li>
+                    <li><a href="#">Excepturi dignissimos</a></li>
+                    <li><a href="#">Suscipit distinctio</a></li>
+                    <li><a href="#">Dilecta</a></li>
+                    <li><a href="#">Sit quas consectetur</a></li>
+                  </ul>
+                </div> -->
+
+                <!-- <div class="col-lg-2 col-md-3 footer-links">
+                  <h4>Nobis illum</h4>
+                  <ul>
+                    <li><a href="#">Ipsam</a></li>
+                    <li><a href="#">Laudantium dolorum</a></li>
+                    <li><a href="#">Dinera</a></li>
+                    <li><a href="#">Trodelas</a></li>
+                    <li><a href="#">Flexo</a></li>
+                  </ul>
+                </div> -->
+            </div>
+        </div>
+        <div class="container copyright text-center mt-4">
+            <p>© <span>Copyright</span> <strong class="px-1 sitename">PDFVIlla</strong> <span>All Rights Reserved</span>
+            </p>
+        </div>
+    </footer>
+    <!-- /Faq Section -->
+    <a href="#" id="scroll-top" class="scroll-top d-flex align-items-center justify-content-center"><i
+            class="bi bi-arrow-up-short"></i></a>
+
+    <script src="assets/js/wordtopdf.js"></script>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-85PRXMJ9YE"></script>
+    <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="assets/vendor/php-email-form/validate.js"></script>
+    <script src="assets/vendor/aos/aos.js"></script>
+    <script src="assets/vendor/glightbox/js/glightbox.min.js"></script>
+    <script src="assets/vendor/swiper/swiper-bundle.min.js"></script>
+    <script src="assets/vendor/purecounter/purecounter_vanilla.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+    <script src="assets/js/main.js"></script>
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "How do I convert a Word document to PDF for free?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Our free online tool lets you convert Word to PDF in 3 simple steps: upload your DOC/DOCX file, review the content, and click \"Convert\". No registration or payment required."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Does this converter preserve my Word document formatting?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes! Our tool maintains text formatting (bold, italics, fonts) and basic layout. For complex documents with advanced elements, we recommend reviewing the PDF preview before downloading."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Is there a file size limit for conversion?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "We support Word files up to 10MB. For larger documents, try compressing images in your Word file before conversion or split the document into smaller parts."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Can I convert multiple Word files to PDF at once?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Currently, our tool processes one file at a time for optimal quality. For batch conversion, simply repeat the process for each document - it only takes seconds per file."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How secure is my document during conversion?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "100% secure. Your file never leaves your browser - all processing happens locally on your device. We don't store or access your documents after conversion."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What Word versions are supported?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "We support all modern Word formats including DOCX (Word 2007+) and legacy DOC files (Word 97-2003). Both Windows and Mac-created documents work perfectly."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Why is my converted PDF file larger than the original Word document?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "PDFs may sometimes be larger due to embedded fonts and uncompressed images. For smaller PDFs, try reducing image sizes in your Word file before conversion."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Can I edit the PDF after conversion?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "PDFs are not directly editable like Word files. For edits, you'll need a PDF editor or can convert the PDF back to Word using a specialized tool."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Does this work on mobile devices?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Absolutely! Our Word to PDF converter works perfectly on smartphones and tablets. Convert documents directly from your mobile browser without installing apps."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How is this different from Microsoft Word's \"Save as PDF\" feature?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Our tool requires no software installation, works on any device with a browser, and processes files locally for enhanced privacy. It's ideal when you don't have Word installed or need quick conversion on-the-go."
+          }
+        }
+      ]
+    }
+    </script>
+</body>
+
+</html>
